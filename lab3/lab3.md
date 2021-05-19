@@ -18,9 +18,9 @@
 ## Задание 1
 Ссылка на XML: https://kodaktor.ru/j/8c161b5
 
-Ссылка на XSL: https://kodaktor.ru/x/688f227
+Ссылка на XSL: [task1](./task1.xml)
 
-Ссылка на стилизованный итоговый XML: https://kodaktor.ru/g/8c161b5
+Ссылка на стилизованный итоговый XML: 
 
 
 ## Задание 2

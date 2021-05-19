@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="#xslt_task1"?>
+
+<!DOCTYPE root [
+    <!ELEMENT root (xsl:stylesheet, строка)*>
+    <!ELEMENT xsl:stylesheet (xsl:template)*>
+    <!ELEMENT xsl:template ANY>
+    <!ELEMENT html (head, body)*>
+    <!ELEMENT head (title,script)*>
+    <!ELEMENT script EMPTY>
+    <!ELEMENT body (math)*>
+    <!ELEMENT math (xsl:apply-templates)*>
+    <!ELEMENT xsl:apply-templates EMPTY>
+    <!ELEMENT mi (xsl:value-of)*>
+    <!ELEMENT mo (xsl:value-of)*>
+    <!ELEMENT mn (xsl:value-of)*>
+    <!ELEMENT mrow (xsl:apply-templates)*>
+    <!ELEMENT mfrac (xsl:apply-templates)*>
+    <!ELEMENT msqrt (xsl:apply-templates)*>
+    <!ELEMENT munderover (xsl:apply-templates)*>
+    <!ELEMENT msub (xsl:apply-templates)*>
+    <!ELEMENT msup (xsl:apply-templates)*>
+    <!ELEMENT xsl:value-of EMPTY>
+    <!ELEMENT строка ANY>
+    <!ELEMENT корень ANY>
+    <!ELEMENT низ ANY>
+    <!ELEMENT верх ANY>
+    <!ELEMENT низверх ANY>
+    <!ELEMENT дробь ANY>
+    <!ELEMENT операнд (#PCDATA)>
+    <!ELEMENT оператор (#PCDATA)>
+    <!ELEMENT число (#PCDATA)>
+    <!ELEMENT title (#PCDATA)>
+    <!ATTLIST xsl:stylesheet version CDATA #REQUIRED>
+    <!ATTLIST xsl:stylesheet xmlns:xsl CDATA #REQUIRED>
+    <!ATTLIST xsl:template match CDATA #REQUIRED>
+    <!ATTLIST script src CDATA #REQUIRED>
+    <!ATTLIST script src CDATA #REQUIRED>
+    <!ATTLIST math display CDATA "block">
+    <!ATTLIST xsl:value-of select CDATA #REQUIRED>
+    <!ATTLIST xsl:stylesheet id ID #REQUIRED>
+]>
+
+<root>
+  <xsl:stylesheet version="1.0" id="xslt_task1" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="xsl:stylesheet" />
+    
+    <xsl:template match="/">
+      <html>
+        <head>
+          <title>Задание 1</title>
+          <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+        </head>
+        <body>
+          <math display="block">
+            <xsl:apply-templates />
+          </math>
+        </body>
+      </html>
+    </xsl:template>
+
+    <xsl:template match="операнд">
+      <mi><xsl:value-of select="." /></mi>
+    </xsl:template>
+
+    <xsl:template match="оператор">
+      <mo><xsl:value-of select="." /></mo>
+    </xsl:template>
+
+    <xsl:template match="число">
+      <mn><xsl:value-of select="." /></mn>
+    </xsl:template>
+
+    <xsl:template match="строка">
+      <mrow><xsl:apply-templates /></mrow>
+    </xsl:template>
+
+    <xsl:template match="дробь">
+      <mfrac><xsl:apply-templates /></mfrac>
+    </xsl:template>
+
+    <xsl:template match="корень">
+      <msqrt><xsl:apply-templates /></msqrt>
+    </xsl:template>
+
+    <xsl:template match="низверх">
+      <munderover><xsl:apply-templates /></munderover>
+    </xsl:template>
+
+    <xsl:template match="низ">
+      <msub><xsl:apply-templates /></msub>
+    </xsl:template>
+
+    <xsl:template match="верх">
+      <msup><xsl:apply-templates /></msup>
+    </xsl:template>
+
+  </xsl:stylesheet>
+
+  <строка>
+    <операнд>σ</операнд>
+    <оператор>=</оператор>
+    <корень>
+      <строка>
+        <дробь>
+          <строка>
+            <число>1</число>
+          </строка>
+          <строка>
+            <операнд>N</операнд>
+          </строка>
+        </дробь>
+        <строка>
+          <низверх>
+              <строка>
+                <оператор>∑</оператор>
+              </строка>
+              <строка>
+                <операнд>i</операнд>
+                <оператор>=</оператор>
+                <число>1</число>
+              </строка>
+              <строка>
+                <операнд>N</операнд>
+              </строка>
+          </низверх>
+        <строка>
+        <верх>
+          <строка>
+            <оператор>(</оператор>
+            <низ>
+              <строка>
+                <операнд>x</операнд>
+              </строка>
+              <строка>
+                <операнд>i</операнд>
+              </строка>
+            </низ>
+            <оператор>−</оператор>
+            <операнд>μ</операнд>
+            <оператор>)</оператор>
+          </строка>
+          <строка>
+            <число>2</число>
+          </строка>
+        </верх>
+      </строка>
+        </строка>
+      </строка>
+    </корень>
+    <оператор>.</оператор>
+  </строка>
+</root>
